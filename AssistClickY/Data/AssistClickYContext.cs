@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AssistClickY.Data
 {
-    internal class AssistClickYContext : DbContext
+    public class AssistClickYContext : DbContext
     {
         public DbSet<Hotkey> Hotkeys { get; set; }
 

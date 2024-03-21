@@ -5,6 +5,7 @@ using System.Windows.Threading;
 
 using AssistClickY.Contracts.Services;
 using AssistClickY.Contracts.Views;
+using AssistClickY.Data;
 using AssistClickY.Models;
 using AssistClickY.Services;
 using AssistClickY.ViewModels;
@@ -76,6 +77,10 @@ public partial class App : Application
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
+
+        //db
+        services.AddDbContext<AssistClickYContext>();
+
     }
 
     private async void OnExit(object sender, ExitEventArgs e)
