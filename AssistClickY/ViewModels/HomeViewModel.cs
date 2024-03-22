@@ -39,7 +39,9 @@ namespace AssistClickY.ViewModels
                 var hotkey = new Hotkey
                 {
                     HotkeyCombination = HotkeyCombination.ToString(),
-                    HotkeyJob = CurrentJob
+                    HotkeyJob = CurrentJob,
+                    Key = HotkeyCombination.Key,
+                    ModifierKeys = HotkeyCombination.ModifierKeys,
                 };
 
                 _dbContext.Hotkeys.Add(hotkey);
