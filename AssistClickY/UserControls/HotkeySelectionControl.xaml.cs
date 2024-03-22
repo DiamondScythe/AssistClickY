@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssistClickY.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,15 @@ namespace AssistClickY.UserControls
     /// </summary>
     public partial class HotkeySelectionControl : UserControl
     {
+        public static readonly DependencyProperty HotkeyProperty =
+        DependencyProperty.Register("Hotkey", typeof(Hotkey), typeof(HotkeySelectionControl), new PropertyMetadata(null));
+
+        public Hotkey Hotkey
+        {
+            get { return (Hotkey)GetValue(HotkeyProperty); }
+            set { SetValue(HotkeyProperty, value); }
+        }
+
         public HotkeySelectionControl()
         {
             InitializeComponent();

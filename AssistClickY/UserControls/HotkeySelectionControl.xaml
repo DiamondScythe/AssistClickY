@@ -4,14 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AssistClickY.UserControls"
+             xmlns:cvt="clr-namespace:AssistClickY.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <cvt:HotkeyConverter x:Key="HotkeyConverter"/>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <!--<TextBlock Grid.Column="0" Text="{Binding Path=HotkeyCombination}"></TextBlock>-->
-        <ComboBox Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
+        <TextBlock Grid.Column="0" Text="{Binding Path=HotkeyCombination}"></TextBlock>
+        <!--<TextBlock Grid.Column="1" Text="{Binding Path=HotkeyJob}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>-->
+        <mah:HotKeyBox HotKey="{Binding Path=., Converter={StaticResource HotkeyConverter}}" />
     </Grid>
 </UserControl>

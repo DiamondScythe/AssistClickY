@@ -50,9 +50,17 @@
             Grid.Row="2"
             Margin="{StaticResource MediumLeftRightMargin}"
             Background="{DynamicResource MahApps.Brushes.Gray10}">
-            <ListBox
+            <!--<ListBox
                 ItemsSource="{Binding Hotkeys}"
-                ItemTemplate="{StaticResource hotKeyListDisplay}"/>
+                ItemTemplate="{StaticResource hotKeyListDisplay}"/>-->
+
+            <ListBox ItemsSource="{Binding Hotkeys}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <uc:HotkeySelectionControl Hotkey="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </Page>
