@@ -12,17 +12,17 @@
     
     xmlns:uc="clr-namespace:AssistClickY.UserControls">
 
-    <Page.Resources>
-        <!-- Define your resources here -->
-        <!-- For example, define your DataTemplate here -->
+    <!--<Page.Resources>
+        --><!-- Define your resources here -->
+        <!-- For example, define your DataTemplate here --><!--
         <DataTemplate x:Key="hotKeyListDisplay">
             <uc:HotkeySelectionControl/>
-            <!--<StackPanel>
+            --><!--<StackPanel>
                 <TextBlock Text="{Binding Path=HotkeyCombination}"/>
                 <TextBlock Text="{Binding Path=HotkeyJob}"/>
-            </StackPanel>-->
+            </StackPanel>--><!--
         </DataTemplate>
-    </Page.Resources>
+    </Page.Resources>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -57,6 +57,7 @@
             <ListBox ItemsSource="{Binding Hotkeys}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
+                        <!--binds the Hotkey dependency property of the HotkeySelectionControl to the current data item in the ItemsSource collection.-->
                         <uc:HotkeySelectionControl Hotkey="{Binding}" />
                     </DataTemplate>
                 </ListBox.ItemTemplate>

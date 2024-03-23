@@ -26,7 +26,15 @@ namespace AssistClickY.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotSupportedException();
+            if (value is MahApps.Metro.Controls.HotKey mahHotKey)
+            {
+                return new Hotkey
+                {
+                    ModifierKeys = mahHotKey.ModifierKeys,
+                    Key = mahHotKey.Key
+                };
+            }
+            return null;
         }
     }
 }
