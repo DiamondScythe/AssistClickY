@@ -70,6 +70,15 @@ namespace AssistClickY.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AssistClickY\Audio.
+        /// </summary>
+        public static string AudioSavePath {
+            get {
+                return ResourceManager.GetString("AudioSavePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string HomePageTitle {

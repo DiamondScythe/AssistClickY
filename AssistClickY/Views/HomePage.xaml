@@ -50,7 +50,8 @@
             <Button Content="Add hotkey" HorizontalAlignment="Left" Margin="580,53,0,0" VerticalAlignment="Top" Command="{Binding AddHotkeyCommand}"/>
             <ComboBox Text="{Binding CurrentJob}" HorizontalAlignment="Left" Margin="342,53,0,0" VerticalAlignment="Top" Width="182" ItemsSource="{Binding HotkeyJobs}"/>
             <!-- screenshot button here -->
-            <Button Content="Take screenshot" HorizontalAlignment="Left" Margin="342,124,0,0" VerticalAlignment="Top" Command="{Binding ScreenshotCommand}"/>
+            <Button Content="Take screenshot" HorizontalAlignment="Left" Margin="459,130,0,0" VerticalAlignment="Top" Command="{Binding ScreenshotCommand}"/>
+            <Button Content="Record Audio" HorizontalAlignment="Left" Margin="179,126,0,0" VerticalAlignment="Top" Command="{Binding RecordAudioCommand}"/>
         </Grid>
         <Grid
             Grid.Row="2"

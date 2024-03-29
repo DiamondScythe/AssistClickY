@@ -15,7 +15,7 @@ namespace AssistClickY.MediaTools
         {
 
             var saveFolderPath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyPictures),
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     Properties.Resources.ScreenshotSavePath);
 
             // Check if the directory exists, if not, create it

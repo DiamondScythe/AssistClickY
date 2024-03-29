@@ -138,6 +138,9 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>AssistClickY</value>
   </data>
+  <data name="AudioSavePath" xml:space="preserve">
+    <value>AssistClickY\Audio</value>
+  </data>
   <data name="ScreenshotSavePath" xml:space="preserve">
     <value>AssistClickY\Screenshots</value>
   </data>
