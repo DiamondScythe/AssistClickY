@@ -1,11 +1,16 @@
-﻿using System.IO;
+﻿using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 using AssistClickY.Contracts.Services;
 using AssistClickY.Contracts.Views;
 using AssistClickY.Data;
+using AssistClickY.Helpers.ContextMenu;
+using AssistClickY.Helpers.Mouse;
 using AssistClickY.Models;
 using AssistClickY.Services;
 using AssistClickY.ViewModels;
@@ -14,6 +19,10 @@ using AssistClickY.Views;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NHotkey;
+using NHotkey.Wpf;
+
+using Application = System.Windows.Application;
 
 namespace AssistClickY;
 
@@ -24,6 +33,9 @@ namespace AssistClickY;
 // Tracking issue for improving this is https://github.com/dotnet/wpf/issues/1946
 public partial class App : Application
 {
+
+    public NotifyIcon nfIcon;
+
     private IHost _host;
 
     public T GetService<T>()
@@ -78,14 +90,30 @@ public partial class App : Application
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
 
+        //Notification Icon
+        nfIcon = new NotifyIcon();
+        NotificationIconSetup.SetupNotificationIcon(nfIcon);
+
         //db
         services.AddDbContext<AssistClickYContext>();
 
+        //hotkeys
+        HotkeyManager.Current.AddOrReplace("Increment", Key.M, ModifierKeys.Alt, TestAction);
+    }
+
+    // TODO: Change TestAction to a proper function pls
+    //hotkeys test
+    private void TestAction(object sender, HotkeyEventArgs e)
+    {
+        MouseRecorder.HotkeyAction();
     }
 
     private async void OnExit(object sender, ExitEventArgs e)
     {
         await _host.StopAsync();
+
+        nfIcon.Dispose();
+
         _host.Dispose();
         _host = null;
     }
