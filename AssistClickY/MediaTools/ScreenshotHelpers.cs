@@ -11,6 +11,7 @@ namespace AssistClickY.MediaTools
 {
     public static class ScreenshotHelpers
     {
+        // TODO: Make it possible to choose the region to take the screenshot
         public static void TakeScreenshot()
         {
 
