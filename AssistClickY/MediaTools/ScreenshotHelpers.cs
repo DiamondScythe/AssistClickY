@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Collections.Specialized;
 
 namespace AssistClickY.MediaTools
 {
@@ -35,6 +37,11 @@ namespace AssistClickY.MediaTools
                 bitmap.Size, CopyPixelOperation.SourceCopy);
             }
             bitmap.Save(fullPath, ImageFormat.Jpeg);
+
+            //copies saved image to clipboard
+            var list = new StringCollection();
+            list.Add(fullPath);
+            Clipboard.SetFileDropList(list);
         }
     }
 }

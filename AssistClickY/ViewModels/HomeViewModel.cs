@@ -9,6 +9,9 @@ using System.Drawing.Imaging;
 using AssistClickY.MediaTools;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
+using System.Windows;
+using AssistClickY.UserControls;
+using AssistClickY.Windows;
 
 namespace AssistClickY.ViewModels
 {
@@ -68,6 +71,15 @@ namespace AssistClickY.ViewModels
         private static async Task RecordAudio()
         {
             await AudioRecordingHelpers.RecordAudio();
+        }
+        [RelayCommand]
+        private static void EnableTray()
+        {
+            // Create a new Window
+            var popupWindow = new Tray();
+
+            // Show the Window
+            popupWindow.Show();
         }
     }
 }

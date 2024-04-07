@@ -52,6 +52,7 @@
             <!-- screenshot button here -->
             <Button Content="Take screenshot" HorizontalAlignment="Left" Margin="459,130,0,0" VerticalAlignment="Top" Command="{Binding ScreenshotCommand}"/>
             <Button Content="Record Audio" HorizontalAlignment="Left" Margin="179,126,0,0" VerticalAlignment="Top" Command="{Binding RecordAudioCommand}"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="342,130,0,0" VerticalAlignment="Top" Command="{Binding EnableTrayCommand}"/>
         </Grid>
         <Grid
             Grid.Row="2"

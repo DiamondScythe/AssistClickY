@@ -2,10 +2,12 @@
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AssistClickY.MediaTools
 {
@@ -49,6 +51,11 @@ namespace AssistClickY.MediaTools
                     writer.Dispose();
                     writer = null;
                     capture.Dispose();
+
+                    //copies saved image to clipboard
+                    var list = new StringCollection();
+                    list.Add(outputFilePath);
+                    Clipboard.SetFileDropList(list);
                 };
 
                 capture.StartRecording();
