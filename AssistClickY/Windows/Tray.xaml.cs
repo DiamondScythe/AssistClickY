@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssistClickY.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace AssistClickY.Windows
     /// </summary>
     public partial class Tray : Window
     {
-        public Tray()
+        public Tray(TrayViewModel vm)
         {
             InitializeComponent();
 
@@ -30,11 +31,13 @@ namespace AssistClickY.Windows
             Topmost = true;
             Left = 100; // Set as desired
             Top = 100; // Set as desired
-            Width = 200; // Set as desired
-            Height = 200; // Set as desired
+            //Width = 200; // Set as desired
+            //Height = 200; // Set as desired
 
             // Attach MouseDown event handler to any UI element within the window
             this.MouseDown += Window_MouseDown;
+
+            DataContext = vm;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -45,6 +48,11 @@ namespace AssistClickY.Windows
                 // Call DragMove to allow dragging the window
                 DragMove();
             }
+        }
+
+        private void Hide_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

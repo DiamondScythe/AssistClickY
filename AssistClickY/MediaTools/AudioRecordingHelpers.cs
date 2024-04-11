@@ -13,10 +13,15 @@ namespace AssistClickY.MediaTools
 {
     public static class AudioRecordingHelpers
     {
+        private static bool currentlyRecording = false;
+        private static bool stopRecording = false;
+
         // TODO: fix: Audio doesn't finish recording unless the total amount of audible bits have exceeded 5 seconds.
         // read: https://github.com/naudio/NAudio/blob/master/Docs/WasapiLoopbackCapture.md
         public static async Task RecordAudio()
         {
+            currentlyRecording = true;
+
             var outputFolder = Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                     Properties.Resources.AudioSavePath);
@@ -40,7 +45,8 @@ namespace AssistClickY.MediaTools
                 {
                     writer.Write(a.Buffer, 0, a.BytesRecorded);
                     //records for 5 seconds of audible bits. Change the number to change record duration.
-                    if (writer.Position > capture.WaveFormat.AverageBytesPerSecond * 5)
+                    //or check for stopRecording flag
+                    if (stopRecording || writer.Position > capture.WaveFormat.AverageBytesPerSecond * 5)
                     {
                         capture.StopRecording();
                     }
@@ -52,10 +58,14 @@ namespace AssistClickY.MediaTools
                     writer = null;
                     capture.Dispose();
 
-                    //copies saved image to clipboard
+                    //copies saved audio to clipboard
                     var list = new StringCollection();
                     list.Add(outputFilePath);
                     Clipboard.SetFileDropList(list);
+
+                    //reset the stoprecording flag
+                    currentlyRecording = false;
+                    stopRecording = false;
                 };
 
                 capture.StartRecording();
@@ -66,6 +76,14 @@ namespace AssistClickY.MediaTools
             });
 
             await captureTask;
+        }
+        public static void FinishRecording()
+        {
+            if (currentlyRecording)
+            {
+                stopRecording = true;
+            }
+            // Set the stopRecording flag to true
         }
     }
 }

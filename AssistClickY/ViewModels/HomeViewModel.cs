@@ -75,8 +75,9 @@ namespace AssistClickY.ViewModels
         [RelayCommand]
         private static void EnableTray()
         {
+            TrayViewModel vm = new TrayViewModel();
             // Create a new Window
-            var popupWindow = new Tray();
+            var popupWindow = new Tray(vm);
 
             // Show the Window
             popupWindow.Show();

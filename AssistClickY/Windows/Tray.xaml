@@ -5,9 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AssistClickY.Windows"
         mc:Ignorable="d"
-        Title="Tray" Height="200" Width="200">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Height="59" Width="126"/>
+        Title="Tray" Height="100" Width="400"
+        
+        xmlns:viewmodels="clr-namespace:AssistClickY.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:TrayViewModel}">
 
+    <Window.DataContext>
+        <viewmodels:TrayViewModel />
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Content="Screen" Grid.Column="0" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalAlignment="Top" Height="60" Width="60" Command="{Binding ScreenshotCommand}"/>
+        <Button Content="Audio" Grid.Column="1" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalAlignment="Top" Height="60" Width="60" Command="{Binding RecordAudioCommand}"/>
+        <Button Content="Cut rec" Grid.Column="2" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalAlignment="Top" Height="60" Width="60" Command="{Binding FinishRecordingCommand}"/>
+        <Button Content="Hide" Grid.Column="3" HorizontalAlignment="Center" Margin="10,10,10,10" VerticalAlignment="Top" Height="60" Width="60" Click="Hide_Click"/>
     </Grid>
 </Window>
