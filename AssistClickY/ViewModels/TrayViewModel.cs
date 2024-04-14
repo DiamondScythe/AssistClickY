@@ -29,5 +29,11 @@ namespace AssistClickY.ViewModels
         {
             AudioRecordingHelpers.FinishRecording();
         }
+
+        [RelayCommand]
+        private static void ShowTaskView()
+        {
+
+        }
     }
 }

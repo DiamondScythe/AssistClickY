@@ -46,7 +46,7 @@ namespace AssistClickY.MediaTools
                     writer.Write(a.Buffer, 0, a.BytesRecorded);
                     //records for 5 seconds of audible bits. Change the number to change record duration.
                     //or check for stopRecording flag
-                    if (stopRecording || writer.Position > capture.WaveFormat.AverageBytesPerSecond * 5)
+                    if (stopRecording || writer.Position > capture.WaveFormat.AverageBytesPerSecond * 30)
                     {
                         capture.StopRecording();
                     }
