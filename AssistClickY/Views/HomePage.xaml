@@ -10,17 +10,21 @@
     mc:Ignorable="d"
     d:DesignHeight="450" d:DesignWidth="800"
     
-    xmlns:uc="clr-namespace:AssistClickY.UserControls">
+    xmlns:uc="clr-namespace:AssistClickY.UserControls" xmlns:viewmodels="clr-namespace:AssistClickY.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}">
 
     <!--<Page.Resources>
-        --><!-- Define your resources here -->
-        <!-- For example, define your DataTemplate here --><!--
+        -->
+    <!-- Define your resources here -->
+    <!-- For example, define your DataTemplate here -->
+    <!--
         <DataTemplate x:Key="hotKeyListDisplay">
             <uc:HotkeySelectionControl/>
-            --><!--<StackPanel>
+            -->
+    <!--<StackPanel>
                 <TextBlock Text="{Binding Path=HotkeyCombination}"/>
                 <TextBlock Text="{Binding Path=HotkeyJob}"/>
-            </StackPanel>--><!--
+            </StackPanel>-->
+    <!--
         </DataTemplate>
     </Page.Resources>-->
 
@@ -45,6 +49,10 @@
             <mah:HotKeyBox HotKey="{Binding HotkeyCombination}" HorizontalAlignment="Left" Margin="85,54,0,0" VerticalAlignment="Top" Width="188"/>
             <Button Content="Add hotkey" HorizontalAlignment="Left" Margin="580,53,0,0" VerticalAlignment="Top" Command="{Binding AddHotkeyCommand}"/>
             <ComboBox Text="{Binding CurrentJob}" HorizontalAlignment="Left" Margin="342,53,0,0" VerticalAlignment="Top" Width="182" ItemsSource="{Binding HotkeyJobs}"/>
+            <!-- screenshot button here -->
+            <Button Content="Take screenshot" HorizontalAlignment="Left" Margin="459,130,0,0" VerticalAlignment="Top" Command="{Binding ScreenshotCommand}"/>
+            <Button Content="Record Audio" HorizontalAlignment="Left" Margin="179,126,0,0" VerticalAlignment="Top" Command="{Binding RecordAudioCommand}"/>
+            <Button Content="Button" HorizontalAlignment="Left" Margin="342,130,0,0" VerticalAlignment="Top" Command="{Binding EnableTrayCommand}"/>
         </Grid>
         <Grid
             Grid.Row="2"

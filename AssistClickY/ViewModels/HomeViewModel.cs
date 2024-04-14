@@ -3,6 +3,15 @@ using AssistClickY.Enums;
 using AssistClickY.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using AssistClickY.MediaTools;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
+using System.Windows;
+using AssistClickY.UserControls;
+using AssistClickY.Windows;
 
 namespace AssistClickY.ViewModels
 {
@@ -36,6 +45,7 @@ namespace AssistClickY.ViewModels
         {
             try
             {
+                // TODO: Add some validation
                 var hotkey = new Hotkey
                 {
                     HotkeyCombination = HotkeyCombination.ToString(),
@@ -53,6 +63,24 @@ namespace AssistClickY.ViewModels
             {
 
             }
+        }
+        [RelayCommand]
+        private static void Screenshot() => ScreenshotHelpers.TakeScreenshot();
+
+        [RelayCommand]
+        private static async Task RecordAudio()
+        {
+            await AudioRecordingHelpers.RecordAudio();
+        }
+        [RelayCommand]
+        private static void EnableTray()
+        {
+            TrayViewModel vm = new TrayViewModel();
+            // Create a new Window
+            var popupWindow = new Tray(vm);
+
+            // Show the Window
+            popupWindow.Show();
         }
     }
 }
