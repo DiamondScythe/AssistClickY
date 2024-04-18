@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections.Specialized;
 
-namespace AssistClickY.MediaTools
+namespace AssistClickY.Helpers.MediaTools
 {
     public static class ScreenshotHelpers
     {
@@ -41,7 +41,7 @@ namespace AssistClickY.MediaTools
             //copies saved image to clipboard
             var list = new StringCollection();
             list.Add(fullPath);
-            Clipboard.SetFileDropList(list);
+            System.Windows.Forms.Clipboard.SetFileDropList(list);
         }
     }
 }
