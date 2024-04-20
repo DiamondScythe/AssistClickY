@@ -13,7 +13,7 @@ namespace AssistClickY.Enums
         AudioRecord,
     }
 
-    public enum ClipboardType
+    public enum ClipboardItemType
     {
         Text,
         Image,

@@ -111,7 +111,7 @@ public partial class App : Application
 
     private static void ClipboardMonitor_OnClipboardChange(ClipboardFormat format, object data)
     {
-        Trace.WriteLine("Clipboard changed and it has the format: " + format.ToString());
+        ClipboardManager.AddNewClipboardItem(format, data);
     }
 
     // TODO: Change TestAction to a proper function pls
