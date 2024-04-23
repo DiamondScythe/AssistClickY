@@ -24,7 +24,7 @@ namespace AssistClickY.Helpers.Clipboard
 
             ClipboardItem newItem = new ClipboardItem();
 
-            //public ClipboardFormat Format { get; set; }
+            //public ClipboardItemType Format { get; set; }
 
             //public string ClipboardText { get; set; }
 
@@ -47,7 +47,7 @@ namespace AssistClickY.Helpers.Clipboard
                 // Check if the collection is not null
                 if (FileDropFileNames != null)
                 {
-                    if (FileDropFileNames[0].EndsWith(".wav"))
+                    if (FileDropFileNames[0].EndsWith(".wav") || FileDropFileNames[0].EndsWith(".mp3"))
                     {
                         //deal with audio file
                         newItem.Format = Enums.ClipboardItemType.Audio;
@@ -67,7 +67,7 @@ namespace AssistClickY.Helpers.Clipboard
             }
 
             //add the item into the list
-            ClipboardItems.Add(newItem);
+            clipboardItems.Add(newItem);
         }
     }
 }
