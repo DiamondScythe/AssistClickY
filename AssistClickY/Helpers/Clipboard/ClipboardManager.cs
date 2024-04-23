@@ -1,4 +1,5 @@
-﻿using AssistClickY.Models;
+﻿using AssistClickY.Helpers.Misc;
+using AssistClickY.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -17,10 +18,19 @@ namespace AssistClickY.Helpers.Clipboard
 
         internal static void AddNewClipboardItem(ClipboardFormat format, object data)
         {
+            //this cooldown mechanism is a hack. The clipboard monitor usually alerts twice for FileDrop clipboard items for no apparent reason.
+            //this cooldown should prevent the same item from being added to the list twice.
+            var cooldown = Cooldown.Instance;
+
+            if (cooldown.IsCooldownActive())
+            {
+                Trace.WriteLine("Cooldown hit");
+                return;
+            }
+            cooldown.TriggerCooldown(200);
+
             Trace.WriteLine("Clipboard changed and it has the format: " + format.ToString());
             Trace.WriteLine("Clipboard changed and object has the type: " + data.GetType());
-
-            // You can now access clipboardItems list here
 
             ClipboardItem newItem = new ClipboardItem();
 
