@@ -24,7 +24,6 @@ namespace AssistClickY.Helpers.Clipboard
 
             if (cooldown.IsCooldownActive())
             {
-                Trace.WriteLine("Cooldown hit");
                 return;
             }
             cooldown.TriggerCooldown(200);

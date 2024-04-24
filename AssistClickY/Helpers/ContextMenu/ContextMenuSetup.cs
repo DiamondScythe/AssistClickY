@@ -34,6 +34,8 @@ namespace AssistClickY.Helpers.ContextMenu
                 //filter to text items only
                 CurrentClipboardItems = ClipboardManager.ClipboardItems.Where(item => item.Format == Enums.ClipboardItemType.Text).ToList();
 
+                CurrentClipboardItems = ListTools.PreprocessList(CurrentClipboardItems, 6);
+
                 // Clear existing items before repopulating
                 textSubMenu.DropDownItems.Clear();
 
@@ -68,6 +70,9 @@ namespace AssistClickY.Helpers.ContextMenu
                 List<ClipboardItem> CurrentClipboardItems = new List<ClipboardItem>();
                 //filter to image items only
                 CurrentClipboardItems = ClipboardManager.ClipboardItems.Where(item => item.Format == Enums.ClipboardItemType.Image).ToList();
+
+                CurrentClipboardItems = ListTools.PreprocessList(CurrentClipboardItems, 4);
+
                 // Clear existing items before repopulating
                 imageSubMenu.DropDownItems.Clear();
 
@@ -99,6 +104,9 @@ namespace AssistClickY.Helpers.ContextMenu
                 List<ClipboardItem> CurrentClipboardItems = new List<ClipboardItem>();
                 //filter to audio items only
                 CurrentClipboardItems = ClipboardManager.ClipboardItems.Where(item => item.Format == Enums.ClipboardItemType.Audio).ToList();
+
+                CurrentClipboardItems = ListTools.PreprocessList(CurrentClipboardItems, 6);
+
                 // Clear existing items before repopulating
                 audioSubMenu.DropDownItems.Clear();
 

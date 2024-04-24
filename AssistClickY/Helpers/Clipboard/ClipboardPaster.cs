@@ -1,4 +1,5 @@
 ﻿using AssistClickY.Enums;
+using AssistClickY.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AssistClickY.Helpers.Clipboard
 {
     public class ClipboardPaster
     {
-        public static void PasteClipboardItem(ClipboardItemType format, string item)
+        public static void PasteClipboardItem(ClipboardItem item)
         {
             //public ClipboardItemType Format { get; set; }
 
