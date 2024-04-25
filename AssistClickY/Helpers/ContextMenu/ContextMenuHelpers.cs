@@ -22,7 +22,7 @@ namespace AssistClickY.Helpers.ContextMenu
                 }
                 else
                 {
-                    //NativeMethods.SetForegroundWindow(cmsTray.Handle);
+                    NativeMethods.SetForegroundWindow(cmsTray.Handle);
                     cmsTray.Show(MouseManager.GetCursorPosition());
                 }
             }

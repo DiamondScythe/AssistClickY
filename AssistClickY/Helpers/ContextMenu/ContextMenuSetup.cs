@@ -54,7 +54,7 @@ namespace AssistClickY.Helpers.ContextMenu
                             displayText = item.ClipboardText;
                         }
 
-                        textSubMenu.DropDownItems.Add(displayText, null, (sender, e) => MessageBox.Show($"Content: {item.ClipboardText}"));
+                        textSubMenu.DropDownItems.Add(displayText, null, (sender, e) => ClipboardPaster.PasteClipboardItem(item));
                     }
                 }
                 else
@@ -87,7 +87,7 @@ namespace AssistClickY.Helpers.ContextMenu
                         {
                             // Create an Image object from the file stream
                             Image image = Image.FromStream(fs);
-                            imageSubMenu.DropDownItems.Add("Screenshot", image, (sender, e) => MessageBox.Show($"Content: {item.ClipboardImageLink}"));
+                            imageSubMenu.DropDownItems.Add("Screenshot", image, (sender, e) => ClipboardPaster.PasteClipboardItem(item));
                         }
                     }
                 }
@@ -114,7 +114,7 @@ namespace AssistClickY.Helpers.ContextMenu
                 {
                     foreach (var item in CurrentClipboardItems)
                     {
-                        audioSubMenu.DropDownItems.Add(item.ClipboardAudioLink, null, (sender, e) => MessageBox.Show($"Content: {item.ClipboardAudioLink}"));
+                        audioSubMenu.DropDownItems.Add(item.ClipboardAudioLink, null, (sender, e) => ClipboardPaster.PasteClipboardItem(item));
                     }
                 }
                 else
