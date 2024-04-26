@@ -123,7 +123,15 @@ namespace AssistClickY.Helpers.ContextMenu
                 }
             };
 
-            // Add the submenu to the context menu
+            var magpieMenuItem = new ToolStripMenuItem("Magpie");
+
+            // Asynchronous event handler to add a delay without blocking the UI
+            magpieMenuItem.Click += async (sender, e) =>
+            {
+                await AddDelayAndSendKeys();
+            };
+
+            contextMenu.Items.Add(magpieMenuItem);
             contextMenu.Items.Add(textSubMenu);
             contextMenu.Items.Add(imageSubMenu);
             contextMenu.Items.Add(audioSubMenu);
@@ -131,6 +139,15 @@ namespace AssistClickY.Helpers.ContextMenu
             contextMenu.Items.Add("HotKeyAction", null, (sender, e) => MouseRecorder.HotkeyAction());
             // Add other context menu items here
             return contextMenu;
+        }
+
+        private static async Task AddDelayAndSendKeys()
+        {
+            // Need a delay or else Magpie won't work on certain applications (don't ask me)
+            await Task.Delay(200); // 0.2 sec
+
+            // Sending the keys after the delay
+            SendKeys.SendWait("%q"); // Send "Alt+q"
         }
     }
 }
