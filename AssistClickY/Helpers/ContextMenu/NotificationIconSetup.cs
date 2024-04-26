@@ -22,7 +22,7 @@ namespace AssistClickY.Helpers.ContextMenu
             nfIcon.ContextMenuStrip = ContextMenuSetup.CreateContextMenu();
 
             //HotkeyManager.AddHotkey(ModifierKeys.Shift, Key.A, () => { ContextMenuHelpers.ToggleTrayMenu(nfIcon); });
-            HotkeyManager.Current.AddOrReplace("OpenContextMenu", Key.L, ModifierKeys.Alt, ToggleContextMenuAction(nfIcon));
+            HotkeyManager.Current.AddOrReplace("OpenContextMenu", Key.D, ModifierKeys.Alt, ToggleContextMenuAction(nfIcon));
         }
 
         private static EventHandler<HotkeyEventArgs> ToggleContextMenuAction(NotifyIcon nfIcon)

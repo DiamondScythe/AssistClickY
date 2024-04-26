@@ -12,4 +12,12 @@ namespace AssistClickY.Enums
         Screenshot,
         AudioRecord,
     }
+
+    public enum ClipboardItemType
+    {
+        Text,
+        Image,
+        Audio,
+        Other,
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows;
@@ -9,6 +10,7 @@ using System.Windows.Threading;
 using AssistClickY.Contracts.Services;
 using AssistClickY.Contracts.Views;
 using AssistClickY.Data;
+using AssistClickY.Helpers.Clipboard;
 using AssistClickY.Helpers.ContextMenu;
 using AssistClickY.Helpers.Mouse;
 using AssistClickY.Models;
@@ -99,6 +101,17 @@ public partial class App : Application
 
         //hotkeys
         HotkeyManager.Current.AddOrReplace("Increment", Key.M, ModifierKeys.Alt, TestAction);
+
+        //clipboard monitor
+        ClipboardMonitor.Start();
+        ClipboardMonitor.OnClipboardChange += new ClipboardMonitor.OnClipboardChangeEventHandler(ClipboardMonitor_OnClipboardChange);
+
+
+    }
+
+    private static void ClipboardMonitor_OnClipboardChange(ClipboardFormat format, object data)
+    {
+        ClipboardManager.AddNewClipboardItem(format, data);
     }
 
     // TODO: Change TestAction to a proper function pls
@@ -113,6 +126,8 @@ public partial class App : Application
         await _host.StopAsync();
 
         nfIcon.Dispose();
+
+        ClipboardMonitor.Stop();
 
         _host.Dispose();
         _host = null;

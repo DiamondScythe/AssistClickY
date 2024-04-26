@@ -6,12 +6,12 @@ using CommunityToolkit.Mvvm.Input;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
-using AssistClickY.MediaTools;
 using NAudio.Wave;
 using NAudio.CoreAudioApi;
 using System.Windows;
 using AssistClickY.UserControls;
 using AssistClickY.Windows;
+using AssistClickY.Helpers.MediaTools;
 
 namespace AssistClickY.ViewModels
 {

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AssistClickY.MediaTools
+namespace AssistClickY.Helpers.MediaTools
 {
     public static class AudioRecordingHelpers
     {
@@ -61,7 +61,7 @@ namespace AssistClickY.MediaTools
                     //copies saved audio to clipboard
                     var list = new StringCollection();
                     list.Add(outputFilePath);
-                    Clipboard.SetFileDropList(list);
+                    System.Windows.Forms.Clipboard.SetFileDropList(list);
 
                     //reset the stoprecording flag
                     currentlyRecording = false;
