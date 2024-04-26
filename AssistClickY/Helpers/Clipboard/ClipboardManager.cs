@@ -46,8 +46,8 @@ namespace AssistClickY.Helpers.Clipboard
                 newItem.Format = Enums.ClipboardItemType.Text;
                 newItem.ClipboardText = System.Windows.Forms.Clipboard.GetText();
             }
-
-            if (format == ClipboardFormat.FileDrop)
+            
+            else if (format == ClipboardFormat.FileDrop)
             {
                 //need to somehow differentiate between audio file drop and image file drop first
 
@@ -73,6 +73,10 @@ namespace AssistClickY.Helpers.Clipboard
                 {
                     Trace.WriteLine("String collection is null.");
                 }
+            }
+            else
+            {
+                return;
             }
 
             //add the item into the list

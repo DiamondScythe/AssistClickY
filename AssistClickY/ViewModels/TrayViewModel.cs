@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace AssistClickY.ViewModels
 {
@@ -33,7 +35,12 @@ namespace AssistClickY.ViewModels
         [RelayCommand]
         private static void ShowTaskView()
         {
+            var inputSimulator = new InputSimulator();
 
+            inputSimulator.Keyboard
+                .KeyDown(VirtualKeyCode.LWIN) // Press the Left Windows key
+                .KeyPress(VirtualKeyCode.TAB) // Press and release the Tab key
+                .KeyUp(VirtualKeyCode.LWIN);  // Release the Left Windows key
         }
     }
 }
