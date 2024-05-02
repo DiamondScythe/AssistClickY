@@ -23,7 +23,7 @@ namespace AssistClickY.Helpers.ContextMenu
 
             //sets size of images in image submenu
             contextMenu.ImageScalingSize = new Size(160, 90);
-
+            contextMenu.Font = new Font("Segoe UI", 14, FontStyle.Regular);
             // Create a submenu item with a list of child items
             var textSubMenu = new ToolStripMenuItem("Text items");
 

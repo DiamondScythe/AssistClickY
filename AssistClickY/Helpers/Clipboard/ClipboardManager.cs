@@ -54,7 +54,7 @@ namespace AssistClickY.Helpers.Clipboard
                 StringCollection FileDropFileNames = System.Windows.Forms.Clipboard.GetFileDropList();
 
                 // Check if the collection is not null
-                if (FileDropFileNames != null)
+                if (FileDropFileNames != null && FileDropFileNames.Count < 2)
                 {
                     if (FileDropFileNames[0].EndsWith(".wav") || FileDropFileNames[0].EndsWith(".mp3"))
                     {
@@ -62,16 +62,21 @@ namespace AssistClickY.Helpers.Clipboard
                         newItem.Format = Enums.ClipboardItemType.Audio;
                         newItem.ClipboardAudioLink = FileDropFileNames[0];
                     }
-                    if (FileDropFileNames[0].EndsWith(".jpg") || FileDropFileNames[0].EndsWith(".jpeg") || FileDropFileNames[0].EndsWith(".png"))
+                    else if (FileDropFileNames[0].EndsWith(".jpg") || FileDropFileNames[0].EndsWith(".jpeg") || FileDropFileNames[0].EndsWith(".png"))
                     {
                         //deal with image file
                         newItem.Format = Enums.ClipboardItemType.Image;
                         newItem.ClipboardImageLink = FileDropFileNames[0];
                     }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
                     Trace.WriteLine("String collection is null.");
+                    return;
                 }
             }
             else
