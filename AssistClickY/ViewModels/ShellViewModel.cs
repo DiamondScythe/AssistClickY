@@ -30,7 +30,7 @@ public class ShellViewModel : ObservableObject
     public ObservableCollection<HamburgerMenuItem> MenuItems { get; } = new ObservableCollection<HamburgerMenuItem>()
     {
         new HamburgerMenuGlyphItem() { Label = Resources.ShellHomePage, Glyph = "\uE8A5", TargetPageType = typeof(HomeViewModel) },
-        new HamburgerMenuGlyphItem() { Label = Resources.ShellHotkeySetupPage, Glyph = "\uE8A5", TargetPageType = typeof(HotkeySetupViewModel) },
+        new HamburgerMenuGlyphItem() { Label = Resources.ShellSettingsPage, Glyph = "\uE8A5", TargetPageType = typeof(SettingsViewModel) },
     };
 
     public RelayCommand GoBackCommand => _goBackCommand ?? (_goBackCommand = new RelayCommand(OnGoBack, CanGoBack));

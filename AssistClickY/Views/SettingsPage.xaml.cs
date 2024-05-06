@@ -4,9 +4,9 @@ using AssistClickY.ViewModels;
 
 namespace AssistClickY.Views;
 
-public partial class HotkeySetupPage : Page
+public partial class SettingsPage : Page
 {
-    public HotkeySetupPage(HotkeySetupViewModel viewModel)
+    public SettingsPage(SettingsViewModel viewModel)
     {
         InitializeComponent();
         DataContext = viewModel;

@@ -86,8 +86,8 @@ public partial class App : Application
         services.AddTransient<HomeViewModel>();
         services.AddTransient<HomePage>();
 
-        services.AddTransient<HotkeySetupViewModel>();
-        services.AddTransient<HotkeySetupPage>();
+        services.AddTransient<SettingsViewModel>();
+        services.AddTransient<SettingsPage>();
 
         // Configuration
         services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));

@@ -14,6 +14,8 @@ namespace AssistClickY.Models
         public int HotkeyId { get; set; }
         public string HotkeyCombination { get; set; }
 
+        public string Name { get; set; }
+
         public ModifierKeys ModifierKeys { get; set; }
 
         public Key Key { get; set; }

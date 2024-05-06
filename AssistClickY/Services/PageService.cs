@@ -17,7 +17,7 @@ public class PageService : IPageService
     {
         _serviceProvider = serviceProvider;
         Configure<HomeViewModel, HomePage>();
-        Configure<HotkeySetupViewModel, HotkeySetupPage>();
+        Configure<SettingsViewModel, SettingsPage>();
     }
 
     public Type GetPageType(string key)

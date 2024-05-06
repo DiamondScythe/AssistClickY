@@ -88,20 +88,20 @@ namespace AssistClickY.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HotkeySetup.
-        /// </summary>
-        public static string HotkeySetupPageTitle {
-            get {
-                return ResourceManager.GetString("HotkeySetupPageTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to AssistClickY\Screenshots.
         /// </summary>
         public static string ScreenshotSavePath {
             get {
                 return ResourceManager.GetString("ScreenshotSavePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string SettingsPageTitle {
+            get {
+                return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
             }
         }
         
@@ -133,11 +133,11 @@ namespace AssistClickY.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HotkeySetup.
+        ///   Looks up a localized string similar to Settings.
         /// </summary>
-        public static string ShellHotkeySetupPage {
+        public static string ShellSettingsPage {
             get {
-                return ResourceManager.GetString("ShellHotkeySetupPage", resourceCulture);
+                return ResourceManager.GetString("ShellSettingsPage", resourceCulture);
             }
         }
     }

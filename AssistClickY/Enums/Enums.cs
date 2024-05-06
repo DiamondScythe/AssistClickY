@@ -11,6 +11,7 @@ namespace AssistClickY.Enums
         None,
         Screenshot,
         AudioRecord,
+        Custom,
     }
 
     public enum ClipboardItemType
