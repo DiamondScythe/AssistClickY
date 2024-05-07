@@ -26,11 +26,22 @@ public partial class HomePage : Page
 
     private void DeleteHotkey_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is MenuItem menuItem && menuItem.DataContext is Hotkey hotkey)
+        // Ask for confirmation
+        MessageBoxResult result = MessageBox.Show(
+            "Are you sure you want to delete this hotkey?",
+            "Delete Confirmation",
+            MessageBoxButton.YesNo,
+            MessageBoxImage.Warning);
+
+
+        if (result == MessageBoxResult.Yes)
         {
-            var viewModel = (HomeViewModel)DataContext;
-            if (viewModel.DeleteHotkeyCommand.CanExecute(null))
-                viewModel.DeleteHotkeyCommand.Execute(hotkey);
+            if (sender is MenuItem menuItem && menuItem.DataContext is Hotkey hotkey)
+            {
+                var viewModel = (HomeViewModel)DataContext;
+                if (viewModel.DeleteHotkeyCommand.CanExecute(null))
+                    viewModel.DeleteHotkeyCommand.Execute(hotkey);
+            }
         }
     }
 }

@@ -65,6 +65,30 @@ namespace AssistClickY.ViewModels
 
             }
         }
+
+        [RelayCommand]
+        private static void EditHotkey(Hotkey hotkey)
+        {
+            Trace.WriteLine("TestingEdit");
+            Trace.WriteLine(hotkey.HotkeyCombination);
+        }
+        [RelayCommand]
+        private async Task DeleteHotkey(Hotkey hotkey)
+        {
+            try
+            {
+                _dbContext.Hotkeys.Remove(hotkey);
+                await _dbContext.SaveChangesAsync();
+
+                Hotkeys = _dbContext.GetAllHotkeys();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
         [RelayCommand]
         private static void Screenshot() => ScreenshotHelpers.TakeScreenshot();
 
@@ -83,17 +107,6 @@ namespace AssistClickY.ViewModels
             // Show the Window
             popupWindow.Show();
         }
-        [RelayCommand]
-        private static void EditHotkey(Hotkey hotkey)
-        {
-            Trace.WriteLine("TestingEdit");
-            Trace.WriteLine(hotkey.HotkeyCombination);
-        }
-        [RelayCommand]
-        private static void DeleteHotkey(Hotkey hotkey)
-        {
-            Trace.WriteLine("TestingDeletion");
-            Trace.WriteLine(hotkey.HotkeyCombination);
-        }
+
     }
 }
