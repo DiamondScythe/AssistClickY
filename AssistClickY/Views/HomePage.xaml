@@ -12,22 +12,6 @@
     
     xmlns:uc="clr-namespace:AssistClickY.UserControls" xmlns:viewmodels="clr-namespace:AssistClickY.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HomeViewModel}">
 
-    <!--<Page.Resources>
-        -->
-    <!-- Define your resources here -->
-    <!-- For example, define your DataTemplate here -->
-    <!--
-        <DataTemplate x:Key="hotKeyListDisplay">
-            <uc:HotkeySelectionControl/>
-            -->
-    <!--<StackPanel>
-                <TextBlock Text="{Binding Path=HotkeyCombination}"/>
-                <TextBlock Text="{Binding Path=HotkeyJob}"/>
-            </StackPanel>-->
-    <!--
-        </DataTemplate>
-    </Page.Resources>-->
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="48" />
@@ -65,8 +49,16 @@
             <ListBox ItemsSource="{Binding Hotkeys}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <!--binds the Hotkey dependency property of the HotkeySelectionControl to the current data item in the ItemsSource collection.-->
-                        <uc:HotkeyListItem/>
+                        <Grid>
+                            <uc:HotkeyListItem />
+                            <!-- Define the context menu -->
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Edit" Click="EditHotkey_Click" />
+                                    <MenuItem Header="Delete" Click="DeleteHotkey_Click" />
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

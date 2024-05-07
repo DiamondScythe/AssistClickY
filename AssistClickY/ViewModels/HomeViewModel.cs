@@ -12,6 +12,7 @@ using System.Windows;
 using AssistClickY.UserControls;
 using AssistClickY.Windows;
 using AssistClickY.Helpers.MediaTools;
+using System.Diagnostics;
 
 namespace AssistClickY.ViewModels
 {
@@ -81,6 +82,18 @@ namespace AssistClickY.ViewModels
 
             // Show the Window
             popupWindow.Show();
+        }
+        [RelayCommand]
+        private static void EditHotkey(Hotkey hotkey)
+        {
+            Trace.WriteLine("TestingEdit");
+            Trace.WriteLine(hotkey.HotkeyCombination);
+        }
+        [RelayCommand]
+        private static void DeleteHotkey(Hotkey hotkey)
+        {
+            Trace.WriteLine("TestingDeletion");
+            Trace.WriteLine(hotkey.HotkeyCombination);
         }
     }
 }
