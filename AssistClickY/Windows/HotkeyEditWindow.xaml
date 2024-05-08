@@ -1,0 +1,29 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssistClickY.Windows"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:viewmodels="clr-namespace:AssistClickY.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:EditHotkeyViewModel}" x:Class="AssistClickY.Windows.HotkeyEditWindow"
+        mc:Ignorable="d"
+        Title="HotkeyEditWindow" Height="450" Width="450">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="60,76,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" RenderTransformOrigin="-0.433,1.058"/>
+        <TextBlock HorizontalAlignment="Left" Margin="54,153,0,0" TextWrapping="Wrap" Text="Hotkey" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="76,233,0,0" TextWrapping="Wrap" Text="Job" VerticalAlignment="Top"/>
+
+        <TextBox Text="{Binding UpdatedName}" HorizontalAlignment="Left" Margin="144,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="252"/>
+        <mah:HotKeyBox HotKey="{Binding UpdatedHotkeyCombination}" HorizontalAlignment="Left" Margin="144,148,0,0" VerticalAlignment="Top" Width="252"/>
+        <ComboBox Text="{Binding UpdatedCurrentJob}" HorizontalAlignment="Left" Margin="144,227,0,0" VerticalAlignment="Top" Width="252" ItemsSource="{Binding HotkeyJobs}"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="144,50,0,0" TextWrapping="Wrap" Text="From:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="144,127,0,0" TextWrapping="Wrap" Text="From:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="144,206,0,0" TextWrapping="Wrap" Text="From:" VerticalAlignment="Top"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="196,50,0,0" TextWrapping="Wrap" Text="{Binding OldName}" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="196,127,0,0" TextWrapping="Wrap" Text="{Binding OldHotkey}" VerticalAlignment="Top" Width="200"/>
+        <TextBlock HorizontalAlignment="Left" Margin="196,206,0,0" TextWrapping="Wrap" Text="{Binding OldJob}" VerticalAlignment="Top" Width="200"/>
+
+        <Button Content="Save" Command="{Binding SaveCommand}" HorizontalAlignment="Center" Margin="0,338,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

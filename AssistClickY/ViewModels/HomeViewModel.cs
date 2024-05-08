@@ -13,6 +13,7 @@ using AssistClickY.UserControls;
 using AssistClickY.Windows;
 using AssistClickY.Helpers.MediaTools;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssistClickY.ViewModels
 {
@@ -40,7 +41,6 @@ namespace AssistClickY.ViewModels
         [ObservableProperty]
         private HotkeyJob currentJob;
 
-
         [RelayCommand]
         private async Task AddHotkey()
         {
@@ -67,10 +67,37 @@ namespace AssistClickY.ViewModels
         }
 
         [RelayCommand]
-        private static void EditHotkey(Hotkey hotkey)
+        private async Task EditHotkey(Hotkey updatedHotkey)
         {
             Trace.WriteLine("TestingEdit");
-            Trace.WriteLine(hotkey.HotkeyCombination);
+            Trace.WriteLine(updatedHotkey.HotkeyCombination);
+
+            try
+            {
+                var HotkeyId = updatedHotkey.HotkeyId;
+                var Hotkey = await _dbContext.Hotkeys.SingleOrDefaultAsync(p => p.HotkeyId == HotkeyId);
+
+                if (Hotkey != null)
+                {
+                    Hotkey.HotkeyCombination = updatedHotkey.HotkeyCombination;
+                    Hotkey.HotkeyJob = updatedHotkey.HotkeyJob;
+                    Hotkey.Key = updatedHotkey.Key;
+                    Hotkey.ModifierKeys = updatedHotkey.ModifierKeys;
+                    Hotkey.Name = updatedHotkey.Name;
+
+                    await _dbContext.SaveChangesAsync();
+
+                    Hotkeys = _dbContext.GetAllHotkeys();
+                }
+                else
+                {
+                    //TODO: Throw exception here
+                };
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         [RelayCommand]
         private async Task DeleteHotkey(Hotkey hotkey)
