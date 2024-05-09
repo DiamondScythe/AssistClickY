@@ -30,13 +30,16 @@
             The Mahapps Gray10 color represents where you should place your content.
             Place your content here.
             -->
-            <mah:HotKeyBox HotKey="{Binding HotkeyCombination}" HorizontalAlignment="Left" Margin="85,54,0,0" VerticalAlignment="Top" Width="188"/>
-            <Button Content="Add hotkey" HorizontalAlignment="Left" Margin="580,53,0,0" VerticalAlignment="Top" Command="{Binding AddHotkeyCommand}"/>
-            <ComboBox Text="{Binding CurrentJob}" HorizontalAlignment="Left" Margin="342,53,0,0" VerticalAlignment="Top" Width="182" ItemsSource="{Binding HotkeyJobs}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="100,28,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="94,71,0,0" TextWrapping="Wrap" Text="Hotkey" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="113,112,0,0" TextWrapping="Wrap" Text="Job" VerticalAlignment="Top"/>
+
+            <TextBox Text="{Binding Name}" HorizontalAlignment="Left" Margin="169,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+            <mah:HotKeyBox HotKey="{Binding HotkeyCombination}" HorizontalAlignment="Left" Margin="169,66,0,0" VerticalAlignment="Top" Width="188"/>
+            <Button Content="Add hotkey" HorizontalAlignment="Left" Margin="169,150,0,0" VerticalAlignment="Top" Command="{Binding AddHotkeyCommand}"/>
+            <ComboBox Text="{Binding CurrentJob}" HorizontalAlignment="Left" Margin="169,107,0,0" VerticalAlignment="Top" Width="188" ItemsSource="{Binding HotkeyJobs}"/>
             <!-- screenshot button here -->
-            <Button Content="Take screenshot" HorizontalAlignment="Left" Margin="459,130,0,0" VerticalAlignment="Top" Command="{Binding ScreenshotCommand}"/>
-            <Button Content="Record Audio" HorizontalAlignment="Left" Margin="179,126,0,0" VerticalAlignment="Top" Command="{Binding RecordAudioCommand}"/>
-            <Button Content="Button" HorizontalAlignment="Left" Margin="342,130,0,0" VerticalAlignment="Top" Command="{Binding EnableTrayCommand}"/>
+            <Button Content="Show tray" HorizontalAlignment="Left" Margin="478,0,0,0" VerticalAlignment="Center" Command="{Binding EnableTrayCommand}" Height="30" Width="113"/>
         </Grid>
         <Grid
             Grid.Row="2"

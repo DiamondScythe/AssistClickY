@@ -41,6 +41,9 @@ namespace AssistClickY.ViewModels
         [ObservableProperty]
         private HotkeyJob currentJob;
 
+        [ObservableProperty]
+        private string name;
+
         [RelayCommand]
         private async Task AddHotkey()
         {
@@ -49,6 +52,7 @@ namespace AssistClickY.ViewModels
                 // TODO: Add some validation
                 var hotkey = new Hotkey
                 {
+                    Name = Name,
                     HotkeyCombination = HotkeyCombination.ToString(),
                     HotkeyJob = CurrentJob,
                     Key = HotkeyCombination.Key,

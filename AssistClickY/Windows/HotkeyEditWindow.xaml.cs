@@ -24,6 +24,7 @@ namespace AssistClickY.Windows
         {
             InitializeComponent();
 
+            //to wait for the datacontext to load properly
             this.Loaded += HotkeyEditWindow_Loaded;
         }
 
