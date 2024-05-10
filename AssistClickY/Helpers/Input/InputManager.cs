@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AssistClickY.Data;
+using AssistClickY.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +10,11 @@ namespace AssistClickY.Helpers.Input
 {
     public class InputManager
     {
-        public static void WinTab()
+        public static List<Hotkey> GetCustomHotkeys(AssistClickYContext dbContext)
         {
+            var list = new List<Hotkey>();
+            list = dbContext.GetAllHotkeys();
+            return list;
         }
     }
 }

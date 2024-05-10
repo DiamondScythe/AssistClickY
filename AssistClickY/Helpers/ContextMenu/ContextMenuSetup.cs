@@ -1,4 +1,5 @@
-﻿using AssistClickY.Helpers.Clipboard;
+﻿using AssistClickY.Data;
+using AssistClickY.Helpers.Clipboard;
 using AssistClickY.Helpers.Misc;
 using AssistClickY.Helpers.Mouse;
 using AssistClickY.Models;
@@ -123,6 +124,31 @@ namespace AssistClickY.Helpers.ContextMenu
                 }
             };
 
+            var shortcutSubMenu = new ToolStripMenuItem("Custom shortcuts");
+
+            shortcutSubMenu.DropDownOpening += (sender, e) =>
+            {
+                List<Hotkey> CustomHotkeys = new List<Hotkey>();
+                var dbContext = new AssistClickYContext();
+
+                CustomHotkeys = dbContext.GetAllCustomHotkeys();
+
+                // Clear existing items before repopulating
+                shortcutSubMenu.DropDownItems.Clear();
+
+                if (CustomHotkeys.Any())
+                {
+                    foreach (var hotkey in CustomHotkeys)
+                    {
+                        shortcutSubMenu.DropDownItems.Add(hotkey.HotkeyCombination, null, (sender, e) => { });
+                    }
+                }
+                else
+                {
+                    audioSubMenu.DropDownItems.Add("No custom hotkeys set", null, (sender, e) => { });
+                }
+            };
+
             var magpieMenuItem = new ToolStripMenuItem("Magpie");
 
             // Asynchronous event handler to add a delay without blocking the UI
@@ -131,7 +157,9 @@ namespace AssistClickY.Helpers.ContextMenu
                 await AddDelayAndSendKeys();
             };
 
+            //add the menu items here (in order)
             contextMenu.Items.Add(magpieMenuItem);
+            contextMenu.Items.Add(shortcutSubMenu);
             contextMenu.Items.Add(textSubMenu);
             contextMenu.Items.Add(imageSubMenu);
             contextMenu.Items.Add(audioSubMenu);

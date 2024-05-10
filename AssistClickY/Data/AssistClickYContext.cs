@@ -1,4 +1,5 @@
-﻿using AssistClickY.Models;
+﻿using AssistClickY.Enums;
+using AssistClickY.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,11 @@ namespace AssistClickY.Data
         public List<Hotkey> GetAllHotkeys()
         {
             return Hotkeys.ToList();
+        }
+
+        public List<Hotkey> GetAllCustomHotkeys()
+        {
+            return Hotkeys.Where(h => h.HotkeyJob.Equals(HotkeyJob.Custom)).ToList();
         }
     }
 }
