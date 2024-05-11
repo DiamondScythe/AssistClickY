@@ -1,5 +1,6 @@
 ﻿using AssistClickY.Data;
 using AssistClickY.Helpers.Clipboard;
+using AssistClickY.Helpers.Input;
 using AssistClickY.Helpers.Misc;
 using AssistClickY.Helpers.Mouse;
 using AssistClickY.Models;
@@ -12,7 +13,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.System;
+using WindowsInput;
+using WindowsInput.Native;
 
 namespace AssistClickY.Helpers.ContextMenu
 {
@@ -140,7 +145,7 @@ namespace AssistClickY.Helpers.ContextMenu
                 {
                     foreach (var hotkey in CustomHotkeys)
                     {
-                        shortcutSubMenu.DropDownItems.Add(hotkey.HotkeyCombination, null, (sender, e) => { });
+                        shortcutSubMenu.DropDownItems.Add(hotkey.HotkeyCombination, null, (sender, e) => HotkeySender.SendCustomHotkey(hotkey));
                     }
                 }
                 else
